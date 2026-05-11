@@ -3,7 +3,7 @@ export const translations = {
     hero: {
       availableForWork: "Available for Work",
       hi: "Hi, I'm",
-      name: "Keryakos Alkis",
+      name: "Keryakos Alkis Felopater",
       roles: "> Fullstack Developer | Flutter Developer | DevOps Engineer",
       quote: "“Building scalable applications, cloud infrastructure, and premium digital experiences.”",
       viewProjects: "View Projects",
@@ -96,7 +96,7 @@ export const translations = {
     hero: {
       availableForWork: "متاح للعمل",
       hi: "أهلاً، أنا",
-      name: "كيرياكوس ألكس",
+      name: "كيرياكوس القس فيلوباتير",
       roles: "> مطور ويب شامل | مطور فلاتر | مهندس ديف أوبس",
       quote: "\"بناء تطبيقات قابلة للتوسع، بنية تحتية سحابية، وتجارب رقمية استثنائية.\"",
       viewProjects: "عرض المشاريع",

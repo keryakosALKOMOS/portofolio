@@ -15,8 +15,8 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Keryakos Alkis | Fullstack Developer & DevOps Engineer",
-  description: "Futuristic personal portfolio of Keryakos Alkis, showcasing scalable applications, cloud infrastructure, and premium digital experiences.",
+  title: "Keryakos Alkis Felopater | Fullstack Developer & DevOps Engineer",
+  description: "Futuristic personal portfolio of Keryakos Alkis Felopater, showcasing scalable applications, cloud infrastructure, and premium digital experiences.",
 };
 
 export default function RootLayout({
