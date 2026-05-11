@@ -60,7 +60,7 @@ export default function Hero() {
               View Projects <ArrowRight className="w-4 h-4" />
             </motion.button>
             <motion.a 
-              href="/cv/Keryakos_Alkis_CV.pdf"
+              href="/portofolio/cv/Keryakos_Alkis_CV.pdf"
               download
               target="_blank"
               rel="noopener noreferrer"
@@ -115,7 +115,7 @@ export default function Hero() {
             <div className="absolute inset-8 rounded-full overflow-hidden border-4 border-white/10 bg-gray-900 z-0">
               {/* Fallback image if /profile/profile.jpg fails */}
               <img 
-                src="/profile/profile.jpg" 
+                src="/portofolio/profile/profile.jpg" 
                 alt="Keryakos Alkis" 
                 className="w-full h-full object-cover relative z-10"
               />

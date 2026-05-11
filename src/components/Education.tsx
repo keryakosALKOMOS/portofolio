@@ -6,7 +6,7 @@ export default function Education() {
   const timeline = [
     {
       type: "university",
-      logo: "/logos/AASTMT.png",
+      logo: "/portofolio/logos/AASTMT.png",
       title: "College of Computing and Information Technology",
       subtitle: "Arab Academy for Science, Technology and Maritime Transport (AASTMT)",
       date: "Grade: Very Good",
@@ -15,7 +15,7 @@ export default function Education() {
     },
     {
       type: "training",
-      logo: "/logos/ITI.jpg",
+      logo: "/portofolio/logos/ITI.jpg",
       title: "Flutter Course",
       subtitle: "Information Technology Institute (ITI) - Ministry of Communications and IT",
       date: "Completed",
@@ -24,7 +24,7 @@ export default function Education() {
     },
     {
       type: "certification",
-      logo: "/logos/DEPI.png",
+      logo: "/portofolio/logos/DEPI.png",
       title: "DevOps Engineer Certification",
       subtitle: "Digital Egypt Pioneers Initiative (DEPI) - Ministry of Communications and IT",
       date: "Certified",
@@ -33,7 +33,7 @@ export default function Education() {
     },
     {
       type: "certification",
-      logo: "/micro/micro1-certificate.jpeg",
+      logo: "/portofolio/micro/micro1-certificate.jpeg",
       title: "Micro1 Passed Interview & Certificate",
       subtitle: "Micro1 World-Class Developer Assessment",
       date: "Certified",
