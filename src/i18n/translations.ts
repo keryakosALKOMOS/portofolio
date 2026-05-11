@@ -79,6 +79,7 @@ export const translations = {
     devops: {
       title: "Live",
       subtitle: "Pipeline",
+      description: "Automated CI/CD pipelines, container orchestration, and cloud deployments.",
       terminalTitle: "Terminal - Deployment Logs",
       architecture: "Architecture Overview"
     },
@@ -171,6 +172,7 @@ export const translations = {
     devops: {
       title: "مسار",
       subtitle: "مباشر (Pipeline)",
+      description: "مسارات CI/CD تلقائية، إدارة الحاويات، ونشر التطبيقات السحابية.",
       terminalTitle: "الطرفية (Terminal) - سجلات النشر",
       architecture: "نظرة عامة على البنية التحتية"
     },
