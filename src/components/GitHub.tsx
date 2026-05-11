@@ -3,13 +3,16 @@
 import { motion } from "framer-motion";
 import { GitPullRequest, GitCommit, Star } from "lucide-react";
 import { GithubIcon as Github } from "@/components/Icons";
+import { useLanguage } from "@/i18n/LanguageContext";
 import Image from "next/image";
 
 export default function GitHubSection() {
+  const { t } = useLanguage();
+  
   const stats = [
-    { icon: GitCommit, label: "Total Commits", value: "1,248+" },
-    { icon: GitPullRequest, label: "Pull Requests", value: "86" },
-    { icon: Star, label: "Stars Earned", value: "24" },
+    { icon: GitCommit, label: t.github.commits, value: "1,248+" },
+    { icon: GitPullRequest, label: t.github.prs, value: "86" },
+    { icon: Star, label: t.github.stars, value: "24" },
   ];
 
   return (
@@ -23,9 +26,8 @@ export default function GitHubSection() {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-bold mb-4"
           >
-            Open Source <span className="text-gradient">& Activity</span>
+            {t.github.title} <span className="text-gradient">{t.github.subtitle}</span>
           </motion.h2>
-          <p className="text-gray-400">Consistent contributions and continuous learning.</p>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8 mb-12">
@@ -57,10 +59,9 @@ export default function GitHubSection() {
           className="p-8 rounded-2xl glassmorphism border border-white/5 overflow-hidden"
         >
           <div className="flex justify-between items-center mb-6">
-            <h3 className="text-lg font-bold text-white">Contribution Activity</h3>
+            <h3 className="text-lg font-bold text-white">{t.github.title}</h3>
             <span className="text-sm text-gray-400">Last 12 months</span>
           </div>
-          
           <div className="flex gap-1 overflow-x-auto custom-scrollbar pb-2">
             {Array.from({ length: 52 }).map((_, week) => (
               <div key={week} className="flex flex-col gap-1">
@@ -86,6 +87,10 @@ export default function GitHubSection() {
                 })}
               </div>
             ))}
+          </div>
+
+          <div className="mt-6 flex items-center justify-between text-sm text-gray-500 font-mono">
+            <span>{t.github.contributions}</span>
           </div>
         </motion.div>
       </div>

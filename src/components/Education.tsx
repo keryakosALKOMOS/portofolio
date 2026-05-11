@@ -1,46 +1,25 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 export default function Education() {
-  const timeline = [
-    {
-      type: "university",
-      logo: "/portofolio/logos/AASTMT.png",
-      title: "College of Computing and Information Technology",
-      subtitle: "Arab Academy for Science, Technology and Maritime Transport (AASTMT)",
-      date: "Grade: Very Good",
-      color: "border-blue-500/30",
-      bg: "bg-white",
-    },
-    {
-      type: "training",
-      logo: "/portofolio/logos/ITI.jpg",
-      title: "Flutter Course",
-      subtitle: "Information Technology Institute (ITI) - Ministry of Communications and IT",
-      date: "Completed",
-      color: "border-purple-500/30",
-      bg: "bg-white",
-    },
-    {
-      type: "certification",
-      logo: "/portofolio/logos/DEPI.png",
-      title: "DevOps Engineer Certification",
-      subtitle: "Digital Egypt Pioneers Initiative (DEPI) - Ministry of Communications and IT",
-      date: "Certified",
-      color: "border-green-500/30",
-      bg: "bg-white",
-    },
-    {
-      type: "certification",
-      logo: "/portofolio/micro/micro1-certificate.jpeg",
-      title: "Micro1 Passed Interview & Certificate",
-      subtitle: "Micro1 World-Class Developer Assessment",
-      date: "Certified",
-      color: "border-teal-500/30",
-      bg: "bg-black",
-    },
+  const { t } = useLanguage();
+  
+  const types = ["university", "training", "certification", "certification"];
+  const logos = [
+    "/portofolio/logos/AASTMT.png",
+    "/portofolio/logos/ITI.jpg",
+    "/portofolio/logos/DEPI.png",
+    "/portofolio/micro/micro1-certificate.jpeg"
   ];
+  const colors = [
+    "border-blue-500/30",
+    "border-purple-500/30",
+    "border-green-500/30",
+    "border-teal-500/30"
+  ];
+  const bgs = ["bg-white", "bg-white", "bg-white", "bg-black"];
 
   return (
     <section className="py-32 relative">
@@ -52,7 +31,7 @@ export default function Education() {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-bold mb-4"
           >
-            Education & <span className="text-gradient">Certifications</span>
+            {t.education.title} <span className="text-gradient">{t.education.subtitle}</span>
           </motion.h2>
         </div>
 
@@ -61,7 +40,11 @@ export default function Education() {
           <div className="absolute left-[39px] top-4 bottom-4 w-[2px] bg-white/10 -z-10 hidden md:block" />
 
           <div className="space-y-12">
-            {timeline.map((item, i) => (
+            {t.education.items.map((item, i) => {
+              const logo = logos[i];
+              const color = colors[i];
+              const bg = bgs[i];
+              return (
               <motion.div 
                 key={i}
                 initial={{ opacity: 0, y: 30 }}
@@ -70,9 +53,9 @@ export default function Education() {
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 className="flex flex-col md:flex-row items-start gap-6 md:gap-12"
               >
-                <div className={`w-20 h-20 rounded-full ${item.bg} border-4 ${item.color} flex items-center justify-center shrink-0 relative mx-auto md:mx-0 overflow-hidden p-2`}>
-                  <img src={item.logo} alt={item.title} className="w-full h-full object-contain" />
-                  {i !== timeline.length - 1 && (
+                <div className={`w-20 h-20 rounded-full ${bg} border-4 ${color} flex items-center justify-center shrink-0 relative mx-auto md:mx-0 overflow-hidden p-2`}>
+                  <img src={logo} alt={item.title} className="w-full h-full object-contain" />
+                  {i !== t.education.items.length - 1 && (
                     <div className="absolute top-20 bottom-[-3rem] w-[2px] bg-gradient-to-b from-white/20 to-transparent block md:hidden" />
                   )}
                 </div>
@@ -87,7 +70,7 @@ export default function Education() {
                   <p className="text-lg text-gray-400">{item.subtitle}</p>
                 </div>
               </motion.div>
-            ))}
+            )})}
           </div>
         </div>
       </div>

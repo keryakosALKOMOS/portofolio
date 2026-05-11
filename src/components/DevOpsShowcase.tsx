@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Terminal, Server, GitBranch, Box, Activity } from "lucide-react";
+import { useLanguage } from "@/i18n/LanguageContext";
 import { useEffect, useState } from "react";
 
 const logs = [
@@ -17,6 +18,7 @@ const logs = [
 ];
 
 export default function DevOpsShowcase() {
+  const { t } = useLanguage();
   const [visibleLogs, setVisibleLogs] = useState<string[]>([]);
 
   useEffect(() => {
@@ -45,9 +47,9 @@ export default function DevOpsShowcase() {
             className="text-4xl md:text-5xl font-bold mb-4 flex items-center justify-center gap-4"
           >
             <Activity className="w-10 h-10 text-blue-500" /> 
-            Live <span className="text-gradient">DevOps Workflow</span>
+            {t.devops.title} <span className="text-gradient">{t.devops.subtitle}</span>
           </motion.h2>
-          <p className="text-gray-400">Automated CI/CD pipelines, container orchestration, and cloud deployments.</p>
+          <p className="text-gray-400">{t.devops.description}</p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -63,7 +65,7 @@ export default function DevOpsShowcase() {
               <div className="w-3 h-3 rounded-full bg-yellow-500" />
               <div className="w-3 h-3 rounded-full bg-green-500" />
               <div className="ml-4 text-xs font-mono text-gray-500 flex items-center gap-2">
-                <Terminal className="w-3 h-3" /> bash - deployment
+                <Terminal className="w-3 h-3" /> {t.devops.terminalTitle}
               </div>
             </div>
             <div className="p-6 font-mono text-sm h-[300px] overflow-y-auto custom-scrollbar flex flex-col gap-2">

@@ -3,9 +3,12 @@
 import { motion } from "framer-motion";
 import { Mail, Download, ArrowRight, Smartphone } from "lucide-react";
 import { GithubIcon as Github, LinkedinIcon as Linkedin, FacebookIcon as Facebook, InstagramIcon as Instagram } from "@/components/Icons";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 
 export default function Hero() {
+  const { t } = useLanguage();
+
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
       {/* Background Effects */}
@@ -27,12 +30,12 @@ export default function Hero() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full glassmorphism mb-6 border border-white/10"
           >
             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-            <span className="text-sm font-medium tracking-wider text-gray-300">Available for Work</span>
+            <span className="text-sm font-medium tracking-wider text-gray-300">{t.hero.availableForWork}</span>
           </motion.div>
 
           <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight leading-tight">
-            Hi, I'm <br />
-            <span className="text-gradient-accent">Keryakos Alkis</span>
+            {t.hero.hi} <br />
+            <span className="text-gradient-accent">{t.hero.name}</span>
           </h1>
           
           <div className="h-12 mb-6">
@@ -43,12 +46,12 @@ export default function Hero() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
             >
-              <span className="text-white">&gt; </span> Fullstack Developer <span className="text-blue-500">|</span> Flutter Developer <span className="text-purple-500">|</span> DevOps Engineer
+              {t.hero.roles}
             </motion.p>
           </div>
 
           <p className="text-lg md:text-xl text-gray-400 max-w-xl mb-10 leading-relaxed">
-            “Building scalable applications, cloud infrastructure, and premium digital experiences.”
+            {t.hero.quote}
           </p>
 
           <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 mb-10">
@@ -57,7 +60,7 @@ export default function Hero() {
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 rounded-full bg-white text-black font-semibold flex items-center gap-2 hover:bg-gray-200 transition-colors"
             >
-              View Projects <ArrowRight className="w-4 h-4" />
+              {t.hero.viewProjects} <ArrowRight className="w-4 h-4 rtl:rotate-180" />
             </motion.button>
             <motion.a 
               href="/portofolio/cv/Keryakos_Alkis_CV.pdf"
@@ -68,7 +71,7 @@ export default function Hero() {
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 rounded-full glassmorphism font-semibold flex items-center gap-2 hover:bg-white/10 transition-colors"
             >
-              <Download className="w-4 h-4" /> Download CV
+              <Download className="w-4 h-4" /> {t.hero.downloadCV}
             </motion.a>
           </div>
 

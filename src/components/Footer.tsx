@@ -3,8 +3,10 @@
 import { motion } from "framer-motion";
 import { Mail, MapPin } from "lucide-react";
 import { GithubIcon as Github, LinkedinIcon as Linkedin, FacebookIcon as Facebook, InstagramIcon as Instagram } from "@/components/Icons";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 export default function Footer() {
+  const { t } = useLanguage();
   return (
     <footer className="relative border-t border-white/10 bg-black pt-16 pb-8 overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-blue-900/10 via-black to-black -z-10" />
@@ -12,9 +14,9 @@ export default function Footer() {
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div className="lg:col-span-2">
-            <h3 className="text-2xl font-bold text-white mb-4">Keryakos Alkis</h3>
+            <h3 className="text-2xl font-bold text-white mb-4">{t.hero.name}</h3>
             <p className="text-gray-400 max-w-sm mb-6">
-              Fullstack Developer, Flutter Mobile Developer, and DevOps Engineer. Building the future of scalable digital experiences.
+              {t.footer.desc}
             </p>
             <div className="flex gap-4">
               <motion.a target="_blank" rel="noopener noreferrer" whileHover={{ y: -3 }} href="https://www.linkedin.com/in/keryakos-alkis/" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white transition-colors">
@@ -36,17 +38,17 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-white font-bold mb-4">Quick Links</h4>
+            <h4 className="text-white font-bold mb-4">{t.footer.quickLinks}</h4>
             <ul className="space-y-2 text-gray-400">
-              <li><a href="#" className="hover:text-white transition-colors">About</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Projects</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Experience</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">{t.footer.links[0]}</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">{t.footer.links[1]}</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">{t.footer.links[2]}</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">{t.footer.links[3]}</a></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-white font-bold mb-4">Contact</h4>
+            <h4 className="text-white font-bold mb-4">{t.footer.contact}</h4>
             <ul className="space-y-4 text-gray-400">
               <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4" /> kerooegypt2030@gmail.com
@@ -59,9 +61,9 @@ export default function Footer() {
         </div>
 
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
-          <p>© {new Date().getFullYear()} Keryakos Alkis. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} {t.hero.name}. {t.footer.rights}</p>
           <div className="flex gap-4">
-            <span>Designed in 2026</span>
+            <span>{t.footer.designedIn}</span>
           </div>
         </div>
       </div>

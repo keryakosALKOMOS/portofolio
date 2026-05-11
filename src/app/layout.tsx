@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import LenisProvider from "@/components/LenisProvider";
+import { LanguageProvider } from "@/i18n/LanguageContext";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -29,7 +30,9 @@ export default function RootLayout({
         className={`${inter.variable} ${spaceGrotesk.variable} antialiased bg-black text-white selection:bg-blue-500/30 selection:text-blue-200`}
       >
         <LenisProvider>
-          {children}
+          <LanguageProvider>
+            {children}
+          </LanguageProvider>
         </LenisProvider>
       </body>
     </html>

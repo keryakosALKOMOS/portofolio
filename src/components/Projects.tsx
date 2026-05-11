@@ -3,64 +3,42 @@
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { GithubIcon as Github } from "@/components/Icons";
-import Image from "next/image";
+import { useLanguage } from "@/i18n/LanguageContext";
 
-const projects = [
-  {
-    title: "Educational Platform",
-    description: "A comprehensive learning management system with robust backend and scalable architecture.",
-    tech: ["Next.js", "Node.js", "PostgreSQL"],
-    role: "Fullstack Developer",
-    color: "from-blue-500/20 to-indigo-900/20",
-    codeLink: "https://github.com/keryakosALKOMOS/educational-platform",
-  },
-  {
-    title: "DOKRAN Store",
-    description: "Full-featured shopping system with admin dashboard, favorites, cart, and seamless API integration.",
-    tech: ["Flutter", "Node.js", "Firebase"],
-    role: "Fullstack Developer",
-    color: "from-pink-500/20 to-rose-900/20",
-    codeLink: "https://github.com/keryakosalkomos-rgb/DOKRAN.store",
-    liveLink: "https://dokranstore-production.up.railway.app",
-  },
-  {
-    title: "URL Shortener & Monitoring",
-    description: "Containerized web service featuring custom Grafana dashboards and Prometheus integration for advanced metrics tracking.",
-    tech: ["Docker", "Prometheus", "Grafana", "Node.js"],
-    role: "DevOps Engineer",
-    color: "from-teal-500/20 to-cyan-900/20",
-    codeLink: "https://github.com/keryakosALKOMOS/URL_Shortener_v1",
-  },
-  {
-    title: "Budget App",
-    description: "Financial management mobile app with tracking and categorization.",
-    tech: ["Flutter", "Dart", "Local DB"],
-    role: "Mobile Developer",
-    color: "from-green-500/20 to-emerald-900/20",
-  },
-  {
-    title: "Sugar Mate",
-    description: "Personalized recommendations and health monitoring for diabetics using Machine Learning.",
-    tech: ["Flutter", "Firebase", "ML"],
-    role: "Mobile Developer",
-    color: "from-purple-500/20 to-fuchsia-900/20",
-    codeLink: "https://github.com/beshoyArmia/Sugar_Mate",
-  },
-  {
-    title: "DevOps CI/CD Pipeline",
-    description: "Automated deployment workflow ensuring seamless delivery and testing.",
-    tech: ["Docker", "Jenkins", "GitHub Actions"],
-    role: "DevOps Engineer",
-    color: "from-orange-500/20 to-red-900/20",
-  },
-  {
-    title: "Kubernetes Deployment",
-    description: "Container orchestration with scaling, monitoring, and Nginx reverse proxy.",
-    tech: ["Kubernetes", "Nginx", "Linux"],
-    role: "DevOps Engineer",
-    color: "from-cyan-500/20 to-blue-900/20",
-  },
-];
+  const colors = [
+    "from-blue-500/20 to-indigo-900/20",
+    "from-pink-500/20 to-rose-900/20",
+    "from-purple-500/20 to-fuchsia-900/20",
+    "from-teal-500/20 to-cyan-900/20",
+    "from-green-500/20 to-emerald-900/20",
+    "from-orange-500/20 to-red-900/20",
+    "from-cyan-500/20 to-blue-900/20"
+  ];
+  
+  const techStacks = [
+    ["Next.js", "Node.js", "PostgreSQL"],
+    ["Flutter", "Node.js", "Firebase"],
+    ["Flutter", "Firebase", "ML"],
+    ["Docker", "Prometheus", "Grafana", "Node.js"],
+    ["Flutter", "Dart", "Local DB"],
+    ["Docker", "Jenkins", "GitHub Actions"],
+    ["Kubernetes", "Nginx", "Linux"]
+  ];
+  
+  const codeLinks = [
+    "https://github.com/keryakosALKOMOS/educational-platform",
+    "https://github.com/keryakosalkomos-rgb/DOKRAN.store",
+    "https://github.com/beshoyArmia/Sugar_Mate",
+    "https://github.com/keryakosALKOMOS/URL_Shortener_v1",
+    "", "", ""
+  ];
+  
+  const liveLinks = [
+    "",
+    "https://dokranstore-production.up.railway.app",
+    "", "", "", "", ""
+  ];
+
 
 function ProjectCard({ project, index }: { project: any; index: number }) {
   let mouseX = useMotionValue(0);
@@ -98,7 +76,7 @@ function ProjectCard({ project, index }: { project: any; index: number }) {
       <div className="flex flex-col h-full z-10 relative">
         <div className="text-xs font-mono text-blue-400 mb-2">{project.role}</div>
         <h3 className="text-2xl font-bold text-white mb-4">{project.title}</h3>
-        <p className="text-gray-400 mb-6 flex-1">{project.description}</p>
+        <p className="text-gray-400 mb-6 flex-1">{project.desc}</p>
         
         <div className="flex flex-wrap gap-2 mb-6">
           {project.tech.map((t: string, i: number) => (
@@ -111,12 +89,12 @@ function ProjectCard({ project, index }: { project: any; index: number }) {
         <div className="flex gap-4">
           {project.codeLink && (
             <a href={project.codeLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-white hover:text-blue-400 transition-colors">
-              <Github className="w-4 h-4" /> Code
+              <Github className="w-4 h-4" /> {project.tCode}
             </a>
           )}
           {project.liveLink && (
             <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-white hover:text-purple-400 transition-colors">
-              <ExternalLink className="w-4 h-4" /> Live Demo
+              <ExternalLink className="w-4 h-4" /> {project.tLive}
             </a>
           )}
         </div>
@@ -126,6 +104,7 @@ function ProjectCard({ project, index }: { project: any; index: number }) {
 }
 
 export default function Projects() {
+  const { t } = useLanguage();
   return (
     <section className="py-32 relative">
       <div className="container mx-auto px-6">
@@ -136,7 +115,7 @@ export default function Projects() {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-bold mb-4"
           >
-            Featured <span className="text-gradient">Projects</span>
+            {t.projects.title} <span className="text-gradient">{t.projects.subtitle}</span>
           </motion.h2>
           <motion.div 
             initial={{ opacity: 0, scaleX: 0 }}
@@ -147,9 +126,19 @@ export default function Projects() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, index) => (
+          {t.projects.items.map((item, index) => {
+            const project = {
+              ...item,
+              color: colors[index],
+              tech: techStacks[index],
+              codeLink: codeLinks[index],
+              liveLink: liveLinks[index],
+              tCode: t.projects.code,
+              tLive: t.projects.live
+            };
+            return (
             <ProjectCard key={index} project={project} index={index} />
-          ))}
+          )})}
         </div>
       </div>
     </section>
