@@ -1,46 +1,52 @@
 "use client";
 
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, ArrowRight } from "lucide-react";
 import { GithubIcon as Github } from "@/components/Icons";
 import { useLanguage } from "@/i18n/LanguageContext";
+import Link from "next/link";
+import { projectsData } from "@/data/projectsData";
 
-  const colors = [
-    "from-blue-500/20 to-indigo-900/20",
-    "from-pink-500/20 to-rose-900/20",
-    "from-purple-500/20 to-fuchsia-900/20",
-    "from-teal-500/20 to-cyan-900/20",
-    "from-green-500/20 to-emerald-900/20",
-    "from-orange-500/20 to-red-900/20",
-    "from-cyan-500/20 to-blue-900/20"
-  ];
-  
-  const techStacks = [
-    ["Next.js", "Node.js", "PostgreSQL"],
-    ["Flutter", "Node.js", "Firebase"],
-    ["Flutter", "Firebase", "ML"],
-    ["Docker", "Prometheus", "Grafana", "Node.js"],
-    ["Flutter", "Dart", "Local DB"],
-    ["Docker", "Jenkins", "GitHub Actions"],
-    ["Kubernetes", "Nginx", "Linux"]
-  ];
-  
-  const codeLinks = [
-    "https://github.com/keryakosALKOMOS/educational-platform",
-    "https://github.com/keryakosalkomos-rgb/DOKRAN.store",
-    "https://github.com/beshoyArmia/Sugar_Mate",
-    "https://github.com/keryakosALKOMOS/URL_Shortener_v1",
-    "", "", ""
-  ];
-  
-  const liveLinks = [
-    "",
-    "https://dokranstore-production.up.railway.app",
-    "", "", "", "", ""
-  ];
+const colors = [
+  "from-blue-500/20 to-indigo-900/20",
+  "from-pink-500/20 to-rose-900/20",
+  "from-purple-500/20 to-fuchsia-900/20",
+  "from-teal-500/20 to-cyan-900/20",
+  "from-green-500/20 to-emerald-900/20",
+  "from-orange-500/20 to-red-900/20",
+  "from-cyan-500/20 to-blue-900/20",
+  "from-indigo-500/20 to-violet-900/20",
+  "from-fuchsia-500/20 to-pink-900/20",
+  "from-rose-500/20 to-orange-900/20",
+  "from-emerald-500/20 to-teal-900/20"
+];
+
+const fallbackTechStacks = [
+  ["Next.js", "Node.js", "PostgreSQL"],
+  ["Flutter", "Node.js", "Firebase"],
+  ["Flutter", "Firebase", "ML"],
+  ["Docker", "Prometheus", "Grafana", "Node.js"],
+  ["Flutter", "Dart", "Local DB"],
+  ["Docker", "Jenkins", "GitHub Actions"],
+  ["Kubernetes", "Nginx", "Linux"]
+];
+
+const fallbackCodeLinks = [
+  "https://github.com/keryakosALKOMOS/educational-platform",
+  "https://github.com/keryakosalkomos-rgb/DOKRAN.store",
+  "https://github.com/beshoyArmia/Sugar_Mate",
+  "https://github.com/keryakosALKOMOS/URL_Shortener_v1",
+  "", "", ""
+];
+
+const fallbackLiveLinks = [
+  "",
+  "https://dokranstore-production.up.railway.app",
+  "", "", "", "", ""
+];
 
 
-function ProjectCard({ project, index }: { project: any; index: number }) {
+function ProjectCard({ project, index, isAr }: { project: any; index: number; isAr: boolean }) {
   let mouseX = useMotionValue(0);
   let mouseY = useMotionValue(0);
 
@@ -50,13 +56,18 @@ function ProjectCard({ project, index }: { project: any; index: number }) {
     mouseY.set(clientY - top);
   }
 
+  const pd = project.id ? projectsData[project.id as string] : null;
+  const tech = pd?.technologies || fallbackTechStacks[index] || [];
+  const codeLink = pd?.codeLink || fallbackCodeLinks[index] || "";
+  const liveLink = pd?.liveLink || fallbackLiveLinks[index] || "";
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group relative rounded-2xl border border-white/10 bg-black/50 p-8 glassmorphism overflow-hidden"
+      className="group relative rounded-2xl border border-white/10 bg-black/50 p-8 glassmorphism overflow-hidden flex flex-col"
       onMouseMove={handleMouseMove}
     >
       <motion.div
@@ -79,23 +90,35 @@ function ProjectCard({ project, index }: { project: any; index: number }) {
         <p className="text-gray-400 mb-6 flex-1">{project.desc}</p>
         
         <div className="flex flex-wrap gap-2 mb-6">
-          {project.tech.map((t: string, i: number) => (
+          {tech.map((t: string, i: number) => (
             <span key={i} className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-gray-300">
               {t}
             </span>
           ))}
         </div>
 
-        <div className="flex gap-4">
-          {project.codeLink && (
-            <a href={project.codeLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-white hover:text-blue-400 transition-colors">
-              <Github className="w-4 h-4" /> {project.tCode}
-            </a>
-          )}
-          {project.liveLink && (
-            <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-white hover:text-purple-400 transition-colors">
-              <ExternalLink className="w-4 h-4" /> {project.tLive}
-            </a>
+        <div className="flex items-center justify-between mt-auto pt-4 border-t border-white/10">
+          <div className="flex gap-4">
+            {codeLink && (
+              <a href={codeLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-white hover:text-blue-400 transition-colors">
+                <Github className="w-4 h-4" /> {project.tCode}
+              </a>
+            )}
+            {liveLink && (
+              <a href={liveLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-white hover:text-purple-400 transition-colors">
+                <ExternalLink className="w-4 h-4" /> {project.tLive}
+              </a>
+            )}
+          </div>
+
+          {project.id && (
+            <Link 
+              href={`/projects/${project.id}`}
+              className="inline-flex items-center gap-2 text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors group/link"
+            >
+              {isAr ? "تفاصيل المشروع" : "View Details"}
+              <ArrowRight className={`w-4 h-4 transition-transform group-hover/link:translate-x-1 ${isAr ? 'rotate-180 group-hover/link:-translate-x-1 group-hover/link:translate-x-0' : ''}`} />
+            </Link>
           )}
         </div>
       </div>
@@ -104,9 +127,9 @@ function ProjectCard({ project, index }: { project: any; index: number }) {
 }
 
 export default function Projects() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   return (
-    <section className="py-32 relative">
+    <section id="projects" className="py-32 relative">
       <div className="container mx-auto px-6">
         <div className="mb-16">
           <motion.h2 
@@ -129,16 +152,14 @@ export default function Projects() {
           {t.projects.items.map((item, index) => {
             const project = {
               ...item,
-              color: colors[index],
-              tech: techStacks[index],
-              codeLink: codeLinks[index],
-              liveLink: liveLinks[index],
+              color: colors[index % colors.length],
               tCode: t.projects.code,
               tLive: t.projects.live
             };
             return (
-            <ProjectCard key={index} project={project} index={index} />
-          )})}
+              <ProjectCard key={index} project={project} index={index} isAr={language === 'ar'} />
+            )
+          })}
         </div>
       </div>
     </section>

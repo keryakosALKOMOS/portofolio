@@ -1,16 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code2, Server, Smartphone, Cpu } from "lucide-react";
+import { Code2, Server, Smartphone, Cpu, Monitor } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 
 export default function About() {
   const { t } = useLanguage();
   
-  const icons = [Code2, Smartphone, Server, Cpu];
+  const icons = [Code2, Smartphone, Monitor, Server, Cpu];
 
   return (
-    <section className="py-32 relative">
+    <section id="about" className="py-32 relative">
       <div className="container mx-auto px-6">
         <div className="flex flex-col lg:flex-row gap-16 items-center">
           <motion.div 

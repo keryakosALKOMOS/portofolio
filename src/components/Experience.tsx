@@ -11,7 +11,7 @@ export default function Experience() {
   const colors = ["text-blue-400", "text-purple-400", "text-green-400"];
 
   return (
-    <section className="py-32 relative overflow-hidden">
+    <section id="experience" className="py-32 relative overflow-hidden">
       <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-purple-600/10 blur-[120px] rounded-full -z-10" />
       
       <div className="container mx-auto px-6">

@@ -40,10 +40,10 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-bold mb-4">{t.footer.quickLinks}</h4>
             <ul className="space-y-2 text-gray-400">
-              <li><a href="#" className="hover:text-white transition-colors">{t.footer.links[0]}</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">{t.footer.links[1]}</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">{t.footer.links[2]}</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">{t.footer.links[3]}</a></li>
+              <li><a href="/portofolio/#about" className="hover:text-white transition-colors">{t.footer.links[0]}</a></li>
+              <li><a href="/portofolio/#projects" className="hover:text-white transition-colors">{t.footer.links[1]}</a></li>
+              <li><a href="/portofolio/#experience" className="hover:text-white transition-colors">{t.footer.links[2]}</a></li>
+              <li><a href="mailto:kerooegypt2030@gmail.com" className="hover:text-white transition-colors">{t.footer.links[3]}</a></li>
             </ul>
           </div>
 

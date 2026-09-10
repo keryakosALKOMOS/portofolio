@@ -17,6 +17,7 @@ export const translations = {
       cards: [
         { title: "Fullstack Web", desc: "Building scalable and responsive modern web applications." },
         { title: "Flutter Mobile", desc: "Creating cross-platform mobile experiences with smooth animations." },
+        { title: "Desktop & POS", desc: "Developing comprehensive desktop software and Cashier (POS) systems." },
         { title: "Cloud & DevOps", desc: "Automating pipelines, orchestrating containers, and managing Linux servers." },
         { title: "Performance", desc: "Optimizing UI/UX, database queries, and system architectures." }
       ]
@@ -59,13 +60,17 @@ export const translations = {
       code: "Code",
       live: "Live Demo",
       items: [
-        { title: "Educational Platform", desc: "A comprehensive learning management system with robust backend and scalable architecture.", role: "Fullstack Developer" },
-        { title: "DOKRAN Store", desc: "Full-featured shopping system with admin dashboard, favorites, cart, and seamless API integration.", role: "Fullstack Developer" },
+        { id: "educational-platform", title: "Educational Platform", desc: "A comprehensive learning management system with robust backend and scalable architecture.", role: "Fullstack Developer" },
+        { id: "dokran", title: "DOKRAN Store", desc: "Full-featured shopping system with admin dashboard, favorites, cart, and seamless API integration.", role: "Fullstack Developer" },
         { title: "Sugar Mate", desc: "Personalized recommendations and health monitoring for diabetics using Machine Learning.", role: "Mobile Developer" },
         { title: "URL Shortener & Monitoring", desc: "Containerized web service featuring custom Grafana dashboards and Prometheus integration for advanced metrics tracking.", role: "DevOps Engineer" },
         { title: "Budget App", desc: "Financial management mobile app with tracking and categorization.", role: "Mobile Developer" },
         { title: "DevOps CI/CD Pipeline", desc: "Automated deployment workflow ensuring seamless delivery and testing.", role: "DevOps Engineer" },
-        { title: "Kubernetes Deployment", desc: "Container orchestration with scaling, monitoring, and Nginx reverse proxy.", role: "DevOps Engineer" }
+        { title: "Kubernetes Deployment", desc: "Container orchestration with scaling, monitoring, and Nginx reverse proxy.", role: "DevOps Engineer" },
+        { id: "healing-touch", title: "Healing Touch", desc: "A comprehensive healthcare application connecting patients with specialized medical services.", role: "Mobile Developer" },
+        { id: "elda7e7", title: "Elda7e7", desc: "A comprehensive Desktop Cashier (POS) System with advanced inventory management and sales tracking.", role: "Desktop / Fullstack Developer" },
+        { id: "coffee-shop", title: "Coffee Shop Web", desc: "A modern web application for a premium coffee shop with an interactive menu and online ordering.", role: "Fullstack Developer" },
+        { id: "chicko-web", title: "Chicko Web", desc: "A vibrant and dynamic website for a fast-food restaurant chain with a seamless online ordering experience.", role: "Frontend Developer" }
       ]
     },
     github: {
@@ -110,6 +115,7 @@ export const translations = {
       cards: [
         { title: "مطور ويب شامل", desc: "بناء تطبيقات ويب حديثة، متجاوبة، وقابلة للتوسع." },
         { title: "تطبيقات فلاتر", desc: "إنشاء تطبيقات موبايل عبر الأنظمة المختلفة مع حركات (Animations) سلسة." },
+        { title: "تطبيقات الديسكتوب وأنظمة الكاشير", desc: "إنشاء تطبيقات سطح مكتب متكاملة وأنظمة نقاط البيع (POS Systems)." },
         { title: "الحوسبة السحابية والديف أوبس", desc: "أتمتة المسارات، إدارة الحاويات (Containers)، وإدارة خوادم لينكس." },
         { title: "تحسين الأداء", desc: "تحسين تجربة المستخدم، استعلامات قواعد البيانات، وبنية الأنظمة." }
       ]
@@ -152,13 +158,17 @@ export const translations = {
       code: "الكود",
       live: "معاينة",
       items: [
-        { title: "Educational Platform", desc: "نظام إدارة تعليم شامل مع واجهة خلفية قوية وبنية قابلة للتوسع.", role: "مطور ويب شامل" },
-        { title: "DOKRAN Store", desc: "نظام تسوق إلكتروني متكامل مع لوحة تحكم، مفضلة، سلة مشتريات وتكامل سلس للواجهات البرمجية.", role: "مطور ويب شامل" },
+        { id: "educational-platform", title: "Educational Platform", desc: "نظام إدارة تعليم شامل مع واجهة خلفية قوية وبنية قابلة للتوسع.", role: "مطور ويب شامل" },
+        { id: "dokran", title: "DOKRAN Store", desc: "نظام تسوق إلكتروني متكامل مع لوحة تحكم، مفضلة، سلة مشتريات وتكامل سلس للواجهات البرمجية.", role: "مطور ويب شامل" },
         { title: "Sugar Mate", desc: "تطبيق لتقديم توصيات صحية مخصصة لمرضى السكري باستخدام تعلم الآلة (ML).", role: "مطور تطبيقات فلاتر" },
         { title: "URL Shortener & Monitoring", desc: "خدمة تقصير روابط داخل حاويات مع لوحات تحكم Grafana مخصصة وتتبع الأداء عبر Prometheus.", role: "مهندس ديف أوبس" },
         { title: "Budget App", desc: "تطبيق موبايل لإدارة الشؤون المالية وتتبع المصروفات.", role: "مطور تطبيقات فلاتر" },
         { title: "DevOps CI/CD Pipeline", desc: "مسار نشر أوتوماتيكي لضمان التوصيل والاختبار السلس للتطبيقات.", role: "مهندس ديف أوبس" },
-        { title: "Kubernetes Deployment", desc: "إدارة الحاويات مع ميزات التوسع والمراقبة وإعداد Nginx كوكيل عكسي.", role: "مهندس ديف أوبس" }
+        { title: "Kubernetes Deployment", desc: "إدارة الحاويات مع ميزات التوسع والمراقبة وإعداد Nginx كوكيل عكسي.", role: "مهندس ديف أوبس" },
+        { id: "healing-touch", title: "Healing Touch", desc: "تطبيق رعاية صحية شامل يربط المرضى بالخدمات الطبية المتخصصة.", role: "مطور تطبيقات فلاتر" },
+        { id: "elda7e7", title: "Elda7e7", desc: "نظام كاشير (POS) متكامل لتطبيقات سطح المكتب (Desktop) مع إدارة متقدمة للمخزون وتتبع المبيعات.", role: "مطور ديسكتوب / ويب شامل" },
+        { id: "coffee-shop", title: "Coffee Shop Web", desc: "تطبيق ويب حديث لمقهى متميز مع قائمة تفاعلية والطلب عبر الإنترنت.", role: "مطور ويب شامل" },
+        { id: "chicko-web", title: "Chicko Web", desc: "موقع إلكتروني حيوي وديناميكي لسلسلة مطاعم وجبات سريعة بتجربة طلب سلسة.", role: "مطور واجهات أمامية" }
       ]
     },
     github: {
